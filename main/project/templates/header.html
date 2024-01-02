@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'project/image/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'project/css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="header-container">
+        <div class="image-container">
+            <img src="{% static 'project/image/logo.png' %}" alt="logo">
+        </div>
+        <div class="menu">
+            <ul class="list-menu">
+
+                {% for h in header %}
+                <li class="list-item"><a href="{% url h.url_name %}" class="link-menu">{{h.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+{% block content %}
+{% endblock %}
+    </div>
+
+<div class="footer-container">
+        <ul class="list-menu">
+            <li class="list-item"><a href="" class="footer-item">Появились вопросы?</a></li>
+            <li class="list-item"><a href="" class="footer-item">Появились вопросы?</a></li>
+            <li class="list-item"><a href="" class="footer-item">Появились вопросы?</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

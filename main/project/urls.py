@@ -1,6 +1,5 @@
 """
-URL configuration for main project.
-
+URL configuration for coolsite project.
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
@@ -17,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from project.views import pageNotFound, serverError, badRequest, forbidden
+from project.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('project.urls')),
+    path('', home, name='home'),
+    path('registration/', registration, name='reg'),
+    path('courses/', courses, name='courses'),
+    path('help/', help, name='help'),
+    path('about/', about, name='about'),
+    path('lesson/', lesson, name='lesson')
 ]
 
-handler404 = pageNotFound
-handler500 = serverError
-handler400 = badRequest
-handler403 = forbidden
+

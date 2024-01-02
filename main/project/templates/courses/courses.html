@@ -1,0 +1,15 @@
+{% extends 'header.html' %}
+{% block content %}
+<div class="title-container">
+    <h1 class="title">Список курсов:</h1>
+</div>
+
+    <div class="card-container col-4">
+        {% for a in course %}
+        <a class="course-card" href="{{a.get_absolute_url}}">{{a.course_name}}</a>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
