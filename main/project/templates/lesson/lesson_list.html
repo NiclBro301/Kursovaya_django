@@ -1,9 +1,9 @@
 {% extends 'header.html' %}
 {% block content %}
 
-
+<ul>
 {% for a in lesson_list %}
-    <p class="title">{{a.lesson_name}}</p>
-    <p class="content">{{a.lesson_content}}</p>
+        <li><a href="">{{a.lesson_name}}</a></li><br>
 {% endfor %}
+</ul>
 {% endblock %}

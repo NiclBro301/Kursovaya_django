@@ -28,7 +28,7 @@ def courses(request):
 
 
     data = {'header': header,
-            'course':obj}
+            'course': obj}
 
     print(obj)
     return render(request, 'courses/courses.html', context=data)
@@ -41,14 +41,34 @@ def about(request):
     data = {'header': header}
     return render(request, 'about/about.html', context=data)
 
-def lesson(request):
-    les = get_object_or_404(Lesson)
-    test = get_object_or_404(Test)
+def lesson_list(request, lesson_slug):
+    course = {'Vvedenie': 1, 'Drugoy': 2}
+    try:
+        obj = Lesson.objects.all()
+    except Lesson.DoesNotExist:
+        raise Http404("No MyModel matches the given query.")
+    slug = get_object_or_404(Course, course_slug=lesson_slug)
+    lessons = Lesson.objects.filter(course_id=course[lesson_slug])
+
     data = {'header': header,
-            'les': les,
-            'test': test,
-            }
-    print(les)
+            'lesson': obj,
+            'slug': slug,
+            'lesson_list': lessons}
+    print(obj)
+    return render(request, 'lesson/lesson_list.html', context=data)
+
+
+def lesson(request, lesson_slug):
+    try:
+        obj = Lesson.objects.get()
+    except Lesson.DoesNotExist:
+        raise Http404("No MyModel matches the given query.")
+    slug = get_object_or_404(Course, course_slug=lesson_slug)
+
+    data = {'header': header,
+            'lesson': obj,
+            'slug': slug}
+    print(obj)
     return render(request, 'lesson/lesson.html', context=data)
 
 #------------------------------------------------------------------------------------
