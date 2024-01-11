@@ -10,7 +10,7 @@ class Course(models.Model):
     course_name = models.CharField(max_length=30)
     course_slug = models.SlugField(max_length=255, db_index=True, unique=True)
     def get_absolute_url(self):
-        return reverse('lesson', kwargs={'lesson_slug': self.course_slug})
+        return reverse('lesson', kwargs={'course_slug': self.course_slug})
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
@@ -18,6 +18,8 @@ class Lesson(models.Model):
     lesson_number = models.SmallIntegerField()
     lesson_content = models.TextField(blank=True)
     lesson_slug = models.SlugField(max_length=255, db_index=True, unique=True)
+    def get_absolute_url(self):
+        return reverse('lesson', kwargs={'lesson_slug': self.lesson_slug})
 
 
 

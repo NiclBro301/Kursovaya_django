@@ -21,12 +21,14 @@ from project.views import *
 
 urlpatterns = [
     path('', home, name='home'),
-    path('registration/', registration, name='reg'),
     path('courses/', courses, name='courses'),
     path('help/', help, name='help'),
     path('about/', about, name='about'),
-    path('courses/<slug:course_slug>/', lesson, name='lesson'),
-    path('lesson/<slug:lesson_slug>/', lesson_list, name='lesson'),
+    path('lesson/<slug:course_slug>/', lesson_list, name='lesson'),
+    path('first/', first, name='first'),
+    path('second/', second, name='second'),
+    path('third/', third, name='third'),
+    path('something/', something, name='something'),
 ]
 
 

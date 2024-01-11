@@ -2,8 +2,41 @@
 {% block content %}
 
 
-{% for a in lesson_list %}
-    <p class="title">{{a.lesson_name}}</p>
-    <p class="content">{{a.lesson_content}}</p>
+{% for a in lesson %}
+{% if forloop.first %}
+    <p class="title">{{a}}</p>
+{% endif %}
+{% if not forloop.first %}
+    <p class="content">{{a}}</p>
+{% endif %}
 {% endfor %}
+
+<h1 class="title">Тест:</h1>
+{% for i in test %}
+{% if forloop.first %}
+    <p class="content">{{i}}</p>
+{% endif %}
+{% if not forloop.first %}
+    <p class="content">{{forloop.counter0}}.{{i}}</p>
+{% endif %}
+{% endfor %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary" type="submit">Ваш ответ:</button>
+  </div>
+  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="answer">
+</div>
+</form>
+<a type="button" href="{% url previous %}" class="btn btn-secondary">Предыдущий урок</a>
+<a type="button" href="{% url next %}" class="btn btn-secondary">Следующий урок</a>
+{% if answer == correct %}
+Правильно
+{% endif %}
+{% if answer != correct and answer != 0 %}
+Неправильно
+{% endif %}
+
 {% endblock %}

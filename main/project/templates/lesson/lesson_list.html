@@ -3,7 +3,7 @@
 
 <ul>
 {% for a in lesson_list %}
-        <li><a href="">{{a.lesson_name}}</a></li><br>
+        <li><a href="{% url a.lesson_slug %}">{{a.lesson_name}}</a></li><br>
 {% endfor %}
 </ul>
 {% endblock %}
